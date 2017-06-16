@@ -2,16 +2,16 @@
 # Project Specific
 ######################
 **/build/**
-/src/test/javascript/coverage/
-/src/test/javascript/PhantomJS*/
+*/src/test/javascript/coverage/
+*/src/test/javascript/PhantomJS*/
 
 ######################
 # Node
 ######################
-/node/
-node_tmp/
-node_modules/
-npm-debug.log.*
+*/node/
+*/node_tmp/
+*/node_modules/
+*/npm-debug.log.*
 
 ######################
 # SASS
