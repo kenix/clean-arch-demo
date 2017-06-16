@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.kenix.cleanarch.demo.repo.mybatis.mapper.CustomerMapper">
+  <resultMap id="rmCustomer" type="net.kenix.cleanarch.demo.domain.Customer">
+    <id property="id" column="cId"/>
+    <result property="firstName" column="cFirstName"/>
+    <result property="lastName" column="cLastName"/>
+    <collection property="deliveryInfos" ofType="net.kenix.cleanarch.demo.domain.DeliveryInfo">
+      <id property="id" column="diId"/>
+      <result property="address" column="diAddress"/>
+    </collection>
+    <collection property="paymentInfos" ofType="net.kenix.cleanarch.demo.domain.PaymentInfo">
+      <id property="id" column="piId"/>
+      <result property="cardNum" column="piCardNum"/>
+    </collection>
+  </resultMap>
+
+  <select id="selectCustomer" resultMap="rmCustomer">
+    SELECT
+      c.id AS cId,
+      c.first_name AS cFirstName,
+      c.last_name as cLastName,
+      di.id AS diId,
+      di.address AS diAddress,
+      pi.id AS piId,
+      pi.card_num AS piCardNum
+    FROM
+      customer c
+      LEFT OUTER JOIN delivery_info di ON di.customer_id = c.id
+      LEFT OUTER JOIN payment_info pi ON pi.customer_id = c.id
+    WHERE
+      c.id = #{id}
+  </select>
+</mapper>

@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+group "net.kenix.cleanarch.demo"
+version "0.0.1-SNAPSHOT"
+
+dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
+}
+
+repositories {
+    jcenter()
+}

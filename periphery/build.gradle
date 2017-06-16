@@ -1,0 +1,10 @@
+subprojects {
+    apply plugin: 'java'
+
+    group "net.kenix.cleanarch.demo"
+    version "0.0.1-SNAPSHOT"
+
+    repositories {
+        jcenter()
+    }
+}

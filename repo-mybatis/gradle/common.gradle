@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+
+group "net.kenix.cleanarch.demo"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+test {
+  maxParallelForks = 1
+  forkEvery = 50
+
+  testLogging {
+    events 'started', 'passed'
+  }
+
+  afterSuite { desc, result ->
+    if (!desc.parent) { // will match the outermost suite
+      def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+      def startItem = '|  ', endItem = '  |'
+      def repeatLength = startItem.length() + output.length() + endItem.length()
+      println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+    }
+  }
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <property name="LOG_FILE"
+    value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring}"/>
+  <appender name="FILEOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${LOG_FILE}.log</File>
+    <encoder>
+      <pattern>%-5p %d{HH:mm:ss.SSS} [%t] %c{0} - %m%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+
+  <springProfile name="default,dev">
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <root level="INFO">
+      <appender-ref ref="CONSOLE"/>
+      <appender-ref ref="FILEOUT"/>
+    </root>
+
+    <logger name="net.kenix.cleanarch.demo" level="DEBUG"/>
+    <logger name="net.kenix.cleanarch.demo.repo.mybatis.mapper.CustomerMapper" level="TRACE"/>
+  </springProfile>
+
+</configuration>

@@ -1,0 +1,15 @@
+apply from: 'gradle/common.gradle'
+version "0.0.1-SNAPSHOT"
+
+dependencies {
+  compile('net.kenix.cleanarch.demo:repo:0.0.1-SNAPSHOT')
+  compile group: 'org.mybatis', name: 'mybatis', version: '3.4.4'
+
+  compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
+}
+
+jar {
+  from('src/main/java') {
+    include '**/*.xml'
+  }
+}
