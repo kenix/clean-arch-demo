@@ -2,5 +2,7 @@ apply from: 'gradle/common.gradle'
 version "0.0.1-SNAPSHOT"
 
 dependencies {
+  compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8")
+
   compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
 }

@@ -19,7 +19,7 @@ public class Customer {
 
   private String lastName;
 
-  private LocalDate dateOfBirth;
+  private LocalDate birthday;
 
   private List<DeliveryInfo> deliveryInfos;
 

@@ -4,6 +4,7 @@ version "0.0.1-SNAPSHOT"
 dependencies {
   compile('net.kenix.cleanarch.demo:repo:0.0.1-SNAPSHOT')
   compile group: 'org.mybatis', name: 'mybatis', version: '3.4.4'
+  compile group: 'org.mybatis', name: 'mybatis-typehandlers-jsr310', version: '1.0.2'
 
   compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
 }

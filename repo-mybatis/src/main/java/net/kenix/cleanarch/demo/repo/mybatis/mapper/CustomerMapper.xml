@@ -7,6 +7,7 @@
     <id property="id" column="cId"/>
     <result property="firstName" column="cFirstName"/>
     <result property="lastName" column="cLastName"/>
+    <result property="birthday" column="cBirthday"/>
     <collection property="deliveryInfos" ofType="net.kenix.cleanarch.demo.domain.DeliveryInfo">
       <id property="id" column="diId"/>
       <result property="address" column="diAddress"/>
@@ -22,6 +23,7 @@
       c.id AS cId,
       c.first_name AS cFirstName,
       c.last_name as cLastName,
+      c.birthday as cBirthday,
       di.id AS diId,
       di.address AS diAddress,
       pi.id AS piId,

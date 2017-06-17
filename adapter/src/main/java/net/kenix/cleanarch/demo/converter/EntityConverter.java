@@ -22,7 +22,8 @@ public class EntityConverter {
             .builder()
             .id(customer.getId())
             .firstName(customer.getFirstName())
-            .lastName(customer.getLastName());
+            .lastName(customer.getLastName())
+            .birthday(customer.getBirthday());
 
     if (customer.getDeliveryInfos() != null) {
       customer.getDeliveryInfos().forEach(di -> builder.deliveryInfo(fromDeliveryInfo(di)));

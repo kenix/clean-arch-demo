@@ -3,6 +3,8 @@
 */
 package net.kenix.cleanarch.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +22,9 @@ public class CustomerDto {
   private String firstName;
 
   private String lastName;
+
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate birthday;
 
   @Singular
   private List<DeliveryInfoDto> deliveryInfos;
